@@ -10,7 +10,7 @@ export default function Post() {
 
   const [posts, setPosts] = useState([]);
  useEffect(() => {
-  fetch("https://blog-app-techy.herokuapp.com/posts")
+  fetch("https://blog-sitapp.herokuapp.com/posts")
   .then((r) => r.json())
   .then((data) => setPosts(data));
  }, [])
@@ -19,8 +19,6 @@ export default function Post() {
   return (
     <div className="post">
    
-
-
     {posts.map((post) => {
       return (
         <div className="postInfo">

@@ -1,13 +1,19 @@
 import {Link} from "react-router-dom";
 import "./topbar.css"
 
-export default function TopBar() {
-  const user = true;
+
+export default function TopBar({ user, onLogout }) {
+    function handleLogout() {
+      fetch("https://blog-sitapp.herokuapp.com/logout", {
+        method: "DELETE",
+      }).then(() => onLogout());
+    }
+ 
   return (
     <div className="top">
     <div className="topLeft">
     <li className="topListItem"> 
-            TECH-CONVO
+            TECHY-CONVO
            </li>
     </div>
     <div className="topCenter">
@@ -25,24 +31,23 @@ export default function TopBar() {
          <Link className="link" to="/write">WRITE</Link>
          </li>
          <li className="topListItem">
-         <Link className="link" to="/login">LOGIN</Link>
+         {/* <Link className="link" to="/login">LOGIN</Link>
          </li>
-
          <li className="topListItem">
-         <Link className="link" to="/register">REGISTER</Link>
+         <Link className="link" to="/register">REGISTER</Link> */}
          </li>
         </ul>
+        
       </div>
       <div className="topRight">
-        {user ? (
-          <Link className="link" to="/settings">
-            <img
-              className="topImg"
-              src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-            />
-          </Link>
-        ) : (
+      {user ? (
+        <div>
+          <p>Welcome, {user.username}!</p>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
           <ul className="topList">
             <li className="topListItem">
               <Link className="link" to="/login">
@@ -55,8 +60,8 @@ export default function TopBar() {
               </Link>
             </li>
           </ul>
-        )}
-        <i className="topSearchIcon fas fa-search"></i>
+        
+        <div/>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ import "./write.css"
     function handleSubmit(e) {
       e.preventDefault();
   
-      fetch("https://blog-app-techy.herokuapp.com/posts", {
+      fetch("https://blog-sitapp.herokuapp.com/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

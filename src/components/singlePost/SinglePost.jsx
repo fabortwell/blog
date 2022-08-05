@@ -4,6 +4,10 @@ import "./singlePost.css"
 
 const SinglePost = () => {
   return (
+
+
+
+
     <div className="singlePost">
        <div className="singlePostWrapper">
            <img
@@ -37,6 +41,11 @@ const SinglePost = () => {
            </p>
        </div>
     </div>
+
+
+
+
+
   )
 }
 
